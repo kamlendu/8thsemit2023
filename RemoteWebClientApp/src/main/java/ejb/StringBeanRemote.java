@@ -14,5 +14,6 @@ import javax.ejb.Remote;
 public interface StringBeanRemote {
     
     String concatenate(String str1, String str2);
+    int sum(int x, int y);
     
 }

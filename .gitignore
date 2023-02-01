@@ -5,3 +5,13 @@
 /TestStates/target/
 /AccessibilityApp/target/
 /RemoteWebClientApp/target/
+/EJBModule/target/
+/CompleteShoppingCart/CompleteShoppingCart-ejb/build/
+/CompleteShoppingCart/CompleteShoppingCart-ejb/dist/
+/CompleteShoppingCart/CompleteShoppingCart-ejb/nbproject/private/
+/CompleteShoppingCart/CompleteShoppingCart-war/build/
+/CompleteShoppingCart/CompleteShoppingCart-war/dist/
+/CompleteShoppingCart/CompleteShoppingCart-war/nbproject/private/
+/CompleteShoppingCart/build/
+/CompleteShoppingCart/dist/
+/CompleteShoppingCart/nbproject/private/

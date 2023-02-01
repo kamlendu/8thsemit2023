@@ -4,6 +4,7 @@
  */
 package ejb;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -13,6 +14,8 @@ import javax.ejb.Stateless;
 @Stateless(mappedName = "ejb/str")
 public class StringBean implements StringBeanRemote {
 
+    @EJB MathBeanLocal mbl;
+    
     @Override
     public String concatenate(String str1, String str2) {
       //  throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -22,6 +25,13 @@ public class StringBean implements StringBeanRemote {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public int sum(int x, int y) {
+      //  throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+      return mbl.add(x, y);
+    }
 
 
 

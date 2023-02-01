@@ -74,7 +74,8 @@ StringBeanRemote sbr;
             
         //    out.println("<h1>The sum of 50 and 40 is " + mbl.add(50, 40) + "</h1>");
           out.println("<h1>The concate of MSc and IT is  " + sbr.concatenate("MSc", "IT") + "</h1>");
-          
+             out.println("<h1>The sum of 70 and 50  " + sbr.sum(70, 50) + "</h1>");
+       
             out.println("</body>");
             out.println("</html>");
         }
