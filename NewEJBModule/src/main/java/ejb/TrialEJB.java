@@ -25,26 +25,24 @@ import javax.naming.InitialContext;
  *
  * @author root
  */
-@MessageDriven(mappedName = "jms/itqueue", activationConfig = {
+@MessageDriven(mappedName = "jms/ictqueue", activationConfig = {
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
-public class ActiveBean implements MessageListener {
-    
-    public ActiveBean() {
+public class TrialEJB implements MessageListener {
+    String msg;
+    public TrialEJB() {
     }
     
     @Override
     public void onMessage(Message message) {
         
         try {
-           
-            System.out.println(((TextMessage)message).getText());
-       
-        
+            msg = ((TextMessage)message).getText();
+            
+             System.out.println("The Servlet Sent : "+ msg);
         } catch (JMSException ex) {
-            Logger.getLogger(ActiveBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TrialEJB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         
         try{
                 
@@ -54,8 +52,8 @@ public class ActiveBean implements MessageListener {
                 //====  Queue ========================================
                 
                 InitialContext ic = new InitialContext(p);
-                Queue queue = (Queue) ic.lookup("jms/ictqueue");
-                ConnectionFactory cf = (ConnectionFactory) ic.lookup("jms/ictqueueFactory");
+                Queue queue = (Queue) ic.lookup("jms/myqueue");
+                ConnectionFactory cf = (ConnectionFactory) ic.lookup("jms/myqueueFactory");
                 Connection con = cf.createConnection();
                 Session session = con.createSession();
                 MessageProducer mp = session.createProducer(queue);
@@ -66,6 +64,11 @@ public class ActiveBean implements MessageListener {
         {
             
         }
+        
+        
+        
+        
+        
     }
     
 }

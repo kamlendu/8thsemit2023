@@ -21,3 +21,9 @@
 /MessageClientApp/target/
 /EJBProject/target/
 /MessagingWebApp/target/
+/NewEJBModule/target/
+/MsgRecieverWebApp/target/
+/SingletonApp/target/
+/TestJPAApp/target/
+/JPAApp/nbproject/private/
+/MyJPAApp/target/
