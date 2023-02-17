@@ -4,29 +4,28 @@
  */
 package servlets;
 
-import ejb.PublishingBeanLocal;
-import entity.Address;
-import entity.Customer;
-import entity.Subscription;
+import client.HelloService;
+import client.HelloService_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
 
 /**
  *
  * @author root
  */
-@WebServlet(name = "PublishingServlet", urlPatterns = {"/PublishingServlet"})
-public class PublishingServlet extends HttpServlet {
+@WebServlet(name = "SOAPServlet", urlPatterns = {"/SOAPServlet"})
+public class SOAPServlet extends HttpServlet {
     
-    @EJB PublishingBeanLocal pbl;
+    @WebServiceRef(wsdlLocation = "http://localhost:8080/SampleSOAPApp/HelloService?WSDL")
+    HelloService_Service service;
+    
+    HelloService hs;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,67 +44,14 @@ public class PublishingServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PublishingServlet</title>");            
+            out.println("<title>Servlet SOAPServlet</title>");            
             out.println("</head>");
             out.println("<body>");
             
-           //pbl.createCustomer("Vivek", "Rawat");
-          // pbl.addAddressToCustomer("Y-123", "Surat", "Gujarat", "395001", 10);
-          // pbl.addAddressToCustomer("First Str", "Vadodara", "Gujarat", "385001", 10);
-           
-          Collection<Integer> ids = new ArrayList<>();
-          ids.add(3);
-          ids.add(4);
-          ids.add(5);
-          
-          //pbl.addSubscriptionsToCustomer(10, ids);
-          
-          //pbl.removeSubscriptionsFromCustomer(10, ids);
-          
-//          pbl.removeAddressOfCustomer(6, 10);
-//          pbl.removeAddressOfCustomer(7, 10);
-          
-          
-         // pbl.removeCustomer(10);
-          
-          
-          
-          
+            hs = service.getHelloServicePort();
             
             
-            Collection<Customer> custs = pbl.getAllCustomers();
-           for(Customer c : custs)
-           {
-              out.println("<br/> id : "+ c.getCustomerID()+ " Name : "+ c.getFirstName()+ " "+ c.getLastName());
-             
-              Collection<Address> addresses = pbl.getAddressesOfCustomer(c.getCustomerID());
-              
-              for(Address a : addresses)
-              {
-                   out.println("<br/> aid : "+ a.getAddressId()+ " Street : "+ a.getStreet()+ " City : "+ a.getCity());
-             
-             
-              }
-              
-              Collection<Subscription> subs = pbl.getSubscriptionsOfCustomer(c.getCustomerID());
-              
-              for(Subscription s : subs)
-              {
-                   out.println("<br/> sid : "+ s.getSubscriptionId()+ " Title : "+ s.getTitle()+ " Type : "+ s.getType());
-             
-              }
-              
-              
-              out.println("<hr/>");
-               
-           }
-            
-            
-            
-            
-            
-            
-            out.println("<h1>Servlet PublishingServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>HelloService Says :  " + hs.hello("MSc IT") + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

@@ -49,7 +49,7 @@ public class PublishingServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-           //pbl.createCustomer("Vivek", "Rawat");
+           // pbl.createCustomer("Vivek", "Rawat");
           // pbl.addAddressToCustomer("Y-123", "Surat", "Gujarat", "395001", 10);
           // pbl.addAddressToCustomer("First Str", "Vadodara", "Gujarat", "385001", 10);
            
@@ -66,7 +66,7 @@ public class PublishingServlet extends HttpServlet {
 //          pbl.removeAddressOfCustomer(7, 10);
           
           
-         // pbl.removeCustomer(10);
+          pbl.removeCustomer(10);
           
           
           

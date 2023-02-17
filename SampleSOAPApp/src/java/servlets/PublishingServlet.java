@@ -4,20 +4,22 @@
  */
 package servlets;
 
-import ejb.PublishingBeanLocal;
-import entity.Address;
-import entity.Customer;
-import entity.Subscription;
+import pclient.Address;
+import pclient.Customer;
+import pclient.Subscription;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
-import javax.ejb.EJB;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
+import pclient.PublishingBean;
+import pclient.PublishingBeanService;
 
 /**
  *
@@ -26,7 +28,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PublishingServlet", urlPatterns = {"/PublishingServlet"})
 public class PublishingServlet extends HttpServlet {
     
-    @EJB PublishingBeanLocal pbl;
+    @WebServiceRef(wsdlLocation = "http://localhost:8080/PublishingBeanService/PublishingBean?WSDL")
+    PublishingBeanService service;
+    
+    PublishingBean pbl;
+    
+            
+          //  @EJB PublishingBeanLocal pbl;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,24 +57,27 @@ public class PublishingServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
+            pbl = service.getPublishingBeanPort();
+            
            //pbl.createCustomer("Vivek", "Rawat");
-          // pbl.addAddressToCustomer("Y-123", "Surat", "Gujarat", "395001", 10);
-          // pbl.addAddressToCustomer("First Str", "Vadodara", "Gujarat", "385001", 10);
+         //  pbl.addAddressToCustomer("Y-123", "Surat", "Gujarat", "395001", 11);
+         //  pbl.addAddressToCustomer("First Str", "Vadodara", "Gujarat", "385001", 11);
            
-          Collection<Integer> ids = new ArrayList<>();
+          List<Integer> ids = new ArrayList<>();
           ids.add(3);
           ids.add(4);
           ids.add(5);
           
-          //pbl.addSubscriptionsToCustomer(10, ids);
+    //      pbl.addSubscriptionsToCustomer(11, ids);
           
-          //pbl.removeSubscriptionsFromCustomer(10, ids);
-          
-//          pbl.removeAddressOfCustomer(6, 10);
-//          pbl.removeAddressOfCustomer(7, 10);
+          //pbl.removeSubscriptionsFromCustomer(11, ids);
           
           
-         // pbl.removeCustomer(10);
+       //   pbl.removeAddressOfCustomer(8, 11);
+       //  pbl.removeAddressOfCustomer(9, 11);
+          
+          
+        //  pbl.removeCustomer(11);
           
           
           

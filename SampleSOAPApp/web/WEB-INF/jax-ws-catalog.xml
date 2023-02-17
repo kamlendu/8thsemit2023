@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/SampleSOAPApp/HelloService?WSDL" uri="wsdl/localhost_8080/SampleSOAPApp/HelloService.wsdl"/>
+    <system systemId="http://localhost:8080/SampleSOAPApp/HelloService?xsd=1" uri="wsdl/localhost_8080/SampleSOAPApp/HelloService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/PublishingBeanService/PublishingBean?WSDL" uri="wsdl/localhost_8080/PublishingBeanService/PublishingBean.wsdl"/>
+    <system systemId="http://localhost:8080/PublishingBeanService/PublishingBean?xsd=1" uri="wsdl/localhost_8080/PublishingBeanService/PublishingBean.xsd_1.xsd"/>
+</catalog>

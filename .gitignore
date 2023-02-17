@@ -29,3 +29,6 @@
 /MyJPAApp/target/
 /JPACommandApp/target/
 /PublishingApp/target/
+/SampleSOAPApp/nbproject/private/
+/SampleSOAPApp/build/
+/SampleSOAPApp/dist/
