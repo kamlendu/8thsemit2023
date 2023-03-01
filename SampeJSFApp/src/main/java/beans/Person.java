@@ -7,6 +7,10 @@ package beans;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /**
  *
@@ -63,6 +67,20 @@ public class Person {
         this.hobbies = hobbies;
     }
     
+    
+    public void validateSal(FacesContext ctx, UIComponent component, Object obj)
+    {
+         Double sal = (Double)obj;
+       
+       if(sal < 2000)
+       {
+           FacesMessage msg = new FacesMessage("You cannot have salary less than 2000");
+           msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+           throw new ValidatorException(msg);
+           
+       
+       }
+    }
 
     /**
      * Creates a new instance of Person

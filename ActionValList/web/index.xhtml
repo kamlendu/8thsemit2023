@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h:form>
+                <h2> <u>Select Fruit(s). </u> </h2>
+
+           
+                <h:selectOneMenu valueChangeListener="#{actionValueLisBean.processValueChange}"   onchange="document.forms[0].submit();" style="font-size: 1.5em;width: 200px;" >
+                    <f:selectItems value="#{actionValueLisBean.fruitsList}" var="fruit" itemLabel="#{fruit}" itemValue="#{fruit}"/>
+
+                </h:selectOneMenu>
+
+                <h3> Your previous selection is :<h:outputText value="#{actionValueLisBean.prevSel}"/></h3>
+                <h3>Your current selection is :<h:outputText value="#{actionValueLisBean.currSel}"/></h3>
+
+
+                <hr style="height: 3px;background: black;"/> <br/>
+
+                   click to fire action listener
+                   <h:commandButton value="Click Me" actionListener="#{actionValueLisBean.processCommandButton}" /> <br/>
+                   <h:outputText value="#{actionValueLisBean.msg}"/>
+            </h:form>
+        </center>
+    </h:body>
+</html>
+
