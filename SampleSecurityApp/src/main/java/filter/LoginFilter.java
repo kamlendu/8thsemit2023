@@ -59,6 +59,12 @@ public class LoginFilter implements Filter {
         AuthenticationStatus status = ctx.authenticate(request, response, withParams().credential(credential));
         if(status == AuthenticationStatus.SUCCESS)
         {
+           if(request.getRequestURI().contains("index.jsp"))
+           {
+            request.getSession().setAttribute("username", username);
+            request.getSession().setAttribute("password", password);
+            
+            
             request.setAttribute("user", ctx.getCallerPrincipal().getName());
             if(ctx.isCallerInRole("Admin"))
             {
@@ -68,6 +74,7 @@ public class LoginFilter implements Filter {
             {
                 request.getRequestDispatcher("/users.jsp").forward(request, response);
             }
+           }
             
         }
         else

@@ -4,11 +4,10 @@
  */
 package servlets;
 
-import ejb.HelloBeanLocal;
+import client.HelloClient;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.annotation.security.DeclareRoles;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.ServletSecurity;
@@ -26,7 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 @ServletSecurity(@HttpConstraint(rolesAllowed ={"Admin","Supervisor"}))
 @WebServlet(name = "SecureServlet", urlPatterns = {"/SecureServlet"})
 public class SecureServlet extends HttpServlet {
-    @EJB HelloBeanLocal hbl;
+  //  @EJB HelloBeanLocal hbl;
+    
+    HelloClient hbl;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,6 +49,12 @@ public class SecureServlet extends HttpServlet {
             out.println("<title>Servlet SecureServlet</title>");            
             out.println("</head>");
             out.println("<body>");
+            
+            String username = request.getSession().getAttribute("username").toString();
+            String password = request.getSession().getAttribute("password").toString();
+            
+            hbl = new HelloClient(username,password);
+            
            // out.println("<h1>Servlet SecureServlet at " + request.getContextPath() + "</h1>");
                out.println("<h3>Security Says : " + hbl.sayHello() + "</h1>");
         

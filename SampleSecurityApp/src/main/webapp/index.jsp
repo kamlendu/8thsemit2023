@@ -17,7 +17,7 @@
       
 
         <form method="POST" >
-            <table>
+            <table border ="1">
                 <tr>
                     <td colspan="2">Login:</td>
                 </tr>
