@@ -1,0 +1,8 @@
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/config/Project.java
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/client/HelloClient.java
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/servlets/SecureServlet.java
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/filter/LoginFilter.java
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/ejb/HelloBean.java
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/it/samplesecurityapp/JakartaRestConfiguration.java
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/it/samplesecurityapp/resources/JakartaEE8Resource.java
+/root/NetBeansProjects/it2023/SampleSecurityApp/src/main/java/ejb/HelloBeanLocal.java
