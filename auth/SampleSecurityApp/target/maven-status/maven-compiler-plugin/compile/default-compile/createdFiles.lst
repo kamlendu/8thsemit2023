@@ -1,0 +1,10 @@
+ejb/HelloBean.class
+it/samplesecurityapp/resources/JakartaEE8Resource.class
+ejb/HelloBeanLocal.class
+client/HelloClient.class
+config/Project.class
+client/HelloClient$1.class
+secure/SecureAuthentication.class
+record/KeepRecord.class
+it/samplesecurityapp/JakartaRestConfiguration.class
+servlets/SecureServlet.class
