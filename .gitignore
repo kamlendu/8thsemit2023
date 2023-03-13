@@ -37,3 +37,5 @@
 /LoginRegistration/target/
 /TemplateApp/target/
 /SampleSecurityApp/target/
+/jwt-security/SecureJSFApp/target/
+/jwt-security/SecurityApp/target/

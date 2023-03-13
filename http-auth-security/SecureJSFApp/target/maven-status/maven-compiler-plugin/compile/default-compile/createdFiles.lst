@@ -9,4 +9,5 @@ ejb/SecureBean.class
 auth/SecureAuthentication.class
 it/securejsfapp/resources/SecureResource.class
 record/KeepRecord.class
+.netbeans_automatic_build
 client/SecureClient.class
