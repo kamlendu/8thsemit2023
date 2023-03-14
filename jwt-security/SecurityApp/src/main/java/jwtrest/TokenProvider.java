@@ -93,7 +93,7 @@ public class TokenProvider implements Serializable {
 "VN5Mi3PXFma6FTORvcSibn192Ofbj7JbRLktf6D9IDIyOMTlqkLzff8/cSXiEeRB\n" +
 "yrkRv9N3iztDUk/gcuru5eDxDlhGnkfHIIpzUMct04j9wW5H0A==";       
         
- 
+ //*** Using Public and Private Keys
 // byte[] privateKeyBytes = Base64.getDecoder().decode(privateKey);
 //byte[] publicKeyBytes= Base64.getDecoder().decode(publicKey);
 //try{
@@ -118,7 +118,7 @@ public class TokenProvider implements Serializable {
                 .setIssuer("localhost")
                 .claim(AUTHORITIES_KEY, authorities.stream().collect(joining(",")))
                 .signWith(SignatureAlgorithm.HS512, secretKey)
-              //  .signWith(SignatureAlgorithm.RS256, myprivateKey)
+                //.signWith(SignatureAlgorithm.RS256, myprivateKey)
                 .setExpiration(new Date(now + validity))
                 .compact();
     }
