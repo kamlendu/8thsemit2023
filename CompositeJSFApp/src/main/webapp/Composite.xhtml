@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:login="http://xmlns.jcp.org/jsf/composite/components/login"
+      xmlns:custom="http://example.com/tags"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <h:form>
+            <h:selectOneMenu id="ma" value="#{user.person}"  onchange="document.forms[0].submit();" valueChangeListener="#{user.handle}">
+                <f:selectItems  class="nms" value="#{user.names}" var="nm" itemLabel="#{nm}" itemValue="#{nm}" />    
+            </h:selectOneMenu>
+            <h:commandButton id="sub" value="Submit">
+            <f:actionListener type="actionlisteners.MyActionListener"/>
+            </h:commandButton>
+        </h:form>
+        <h:outputText id="hy2" value="#{user.person}"/><br/>
+        <h:outputText id="hy" value="#{user.message}"/><br/>
+        <h:outputText id="hy1" value="#{user.message1}"/>
+        
+        <br/>
+        <custom:upper value="hello"/><br/>
+        <login:myout login="Login" 
+                     loginaction="#{user.login()}" 
+                     managedbean="#{user}"
+                     nameprompt="Login Name"
+                     passwordprompt="Password"/>
+                     
+        
+    </h:body>
+</html>
+
