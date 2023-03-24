@@ -5,9 +5,10 @@
 package beans;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
@@ -17,8 +18,8 @@ import javax.faces.event.ValueChangeEvent;
  * @author root
  */
 @Named(value = "user")
-@RequestScoped
-public class User {
+@SessionScoped
+public class User implements Serializable {
     
     String username;
     String person;

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        <br/><!-- comment -->
+
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel id="clbl" for="continent" value="Select Continents" />
+                <h:selectOneMenu id="continent" value="#{comboBean.continentid}" >
+                    <f:selectItem itemLabel="===Select Continents====" itemValue="-1"  /> 
+                    <f:selectItems var="cont" value="#{comboBean.continents}" itemLabel="#{cont.name}" itemValue="#{cont.id}"  />
+                    <f:ajax event="valueChange" listener="#{comboBean.populateCountries}" render="countries" />
+
+                </h:selectOneMenu>
+
+
+                <h:outputLabel id="contlbl" for="countries" value="Select Countries"/> 
+                <h:selectOneMenu id="countries" value="#{comboBean.countryid}"  >
+                    <f:selectItem itemLabel="===Select Countries====" itemValue="-1"  /> 
+
+                    <f:selectItems var="cont" value="#{comboBean.countries}" itemLabel="#{cont.name}" itemValue="#{cont.id}"  />        
+                    <f:ajax event="valueChange" listener="#{comboBean.populateStates}" render="states" />
+
+                </h:selectOneMenu>
+
+
+                <h:outputLabel id="statelbl" for="states" value="Select States"/>
+                <h:selectOneMenu id="states" value="#{comboBean.stateid}">
+                    <f:selectItem itemLabel="===Select States====" itemValue="-1"  /> 
+
+                    <f:selectItems var="cont" value="#{comboBean.states}" itemLabel="#{cont.name}" itemValue="#{cont.id}"/>
+                    <f:ajax event="valueChange" listener="#{comboBean.populateDistricts}" render="districts" />
+                </h:selectOneMenu>
+
+
+                <h:outputLabel id="districtlbl" for="districts" value="Select Districts"/>
+                <h:selectOneMenu id="districts" value="#{comboBean.districtid}">
+                    <f:selectItem itemLabel="===Select Districts====" itemValue="-1"  /> 
+
+                    <f:selectItems var="cont" value="#{comboBean.districts}" itemLabel="#{cont.name}" itemValue="#{cont.id}"/>
+                    <f:ajax event="valueChange" listener="#{comboBean.populateTalukas}" render="talukas" />
+                </h:selectOneMenu>
+
+
+                <h:outputLabel id="talukalbl" for="talukas" value="Select Talukas"/>
+                <h:selectOneMenu id="talukas" value="#{comboBean.talukaid}">
+                    <f:selectItem itemLabel="===Select Talukas====" itemValue="-1"  /> 
+
+                    <f:selectItems var="cont" value="#{comboBean.talukas}" itemLabel="#{cont.name}" itemValue="#{cont.id}"/>
+                    <f:ajax event="valueChange" listener="#{comboBean.populateVillages}" render="villages" />
+                </h:selectOneMenu>
+
+
+                <h:outputLabel id="villagelbl" for="villages" value="Select Villages"/>
+                <h:selectOneMenu id="villages" value="#{comboBean.villageid}">
+                    <f:selectItem itemLabel="===Select Villages====" itemValue="-1"  /> 
+
+                    <f:selectItems var="cont" value="#{comboBean.villages}" itemLabel="#{cont.name}" itemValue="#{cont.id}"/>
+
+                </h:selectOneMenu>
+
+
+
+            </h:panelGrid>
+
+
+            <h:commandButton id="cmd" value="Submit" action="Result1.jsf"/>
+        </h:form>
+
+    </h:body>
+</html>
+
