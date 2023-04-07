@@ -1,0 +1,65 @@
+CREATE TABLE `cust` (
+  `cid` int(11) NOT NULL AUTO_INCREMENT,
+  `cname` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+mysql> select * from cust;
++-----+-------+------------+-----------------+
+| cid | cname | phone      | email           |
++-----+-------+------------+-----------------+
+|   1 | Rahul | 9321144556 | rahul@gmail.com |
+|   2 | John  | 9999999999 | john@yahoo.com  |
++-----+-------+------------+-----------------+
+
+
+
+CREATE TABLE `products` (
+  `pid` int(11) NOT NULL AUTO_INCREMENT,
+  `pname` varchar(100) DEFAULT NULL,
+  `rate` double(5,2) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `discount` double(5,2) DEFAULT NULL,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+mysql> select * from products;
++-----+----------------------+--------+-------+----------+
+| pid | pname                | rate   | stock | discount |
++-----+----------------------+--------+-------+----------+
+|   1 | Pickle 200gm         | 450.00 |   100 |    10.00 |
+|   2 | Sugar Bag 20 kg      | 900.00 |   150 |     5.00 |
+|   3 | Basmati Rice Bag 5kg | 465.00 |    50 |     5.00 |
+|   4 | Tea Jivraj           | 300.00 |   200 |    10.00 |
++-----+----------------------+--------+-------+----------+
+
+
+=== The tables to be populated
+
+CREATE TABLE `billmaster` (
+  `bid` int(11) NOT NULL AUTO_INCREMENT,
+  `cid` int(11) DEFAULT NULL,
+  `grandtotal` double(10,2) DEFAULT NULL,
+  PRIMARY KEY (`bid`),
+  KEY `fkcustbill` (`cid`),
+  CONSTRAINT `fkcustbill` FOREIGN KEY (`cid`) REFERENCES `cust` (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+
+
+CREATE TABLE `billdetail` (
+  `bdid` int(11) NOT NULL AUTO_INCREMENT,
+  `bid` int(11) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `total` double(10,2) DEFAULT NULL,
+  PRIMARY KEY (`bdid`),
+  KEY `fkprodbill` (`pid`),
+  KEY `fkbdbill` (`bid`),
+  CONSTRAINT `fkbdbill` FOREIGN KEY (`bid`) REFERENCES `billmaster` (`bid`),
+  CONSTRAINT `fkprodbill` FOREIGN KEY (`pid`) REFERENCES `products` (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+
