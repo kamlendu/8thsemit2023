@@ -34,13 +34,13 @@ public class DataLogic {
     public Billmaster getBillMaster(int cid)
     {
         Billmaster bm=null;
-        Cust c = em.find(Cust.class, cid);
-     Collection<Billmaster> bms=   c.getBillmasterCollection();
+      //  Cust c = em.find(Cust.class, cid);
+     Collection<Billmaster> bms=   em.createNamedQuery("Billmaster.findAll").getResultList();
     
      for(Billmaster bm1 : bms)
      {
         bm=bm1;
-        break;
+        //break;
      }
      return bm;
     }
@@ -57,7 +57,10 @@ public class DataLogic {
         c.setBillmasterCollection(bc);
         em.persist(bm);
         em.merge(c);
+        
     }
+    
+   
     
     public void updateBillMaster(int bid)
     {

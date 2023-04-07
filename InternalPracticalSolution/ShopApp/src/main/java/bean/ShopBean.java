@@ -189,7 +189,7 @@ public class ShopBean implements Serializable{
  public String generateBill()
  {
          int counter=1;
-     dl.createBillMaster(cid,grandtotal);
+    dl.createBillMaster(cid,grandtotal);
      Billmaster bm = dl.getBillMaster(cid);
      Collection<Integer> pids = new ArrayList<>();
      Collection<Integer> pqty = new ArrayList<>();
@@ -199,6 +199,7 @@ public class ShopBean implements Serializable{
          pids.add(p.getPid());
          pqty.add(p.getQuantity());
      }
+     
      
      
      dl.insertBillDetail(bm.getBid(), cartProducts);
