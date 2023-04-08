@@ -31,6 +31,18 @@ public class DataLogic {
         return em.createNamedQuery("Products.findAll").getResultList();
     }
     
+    public int getProductCount()
+    {
+        int count=0;
+      Collection<Products> prs=  em.createNamedQuery("Products.findAll").getResultList();
+    for(Products p: prs)
+    {
+        count++;
+        
+    }
+      return count;
+    }
+    
     public Billmaster getBillMaster(int cid)
     {
         Billmaster bm=null;

@@ -28,7 +28,7 @@ public class ShopBean implements Serializable{
     @EJB DataLogic dl;
     
     Cust c;
-    int prcount;
+    int prcount;// = dl.getAllProducts().size();
     int cid;
     int billid;
     Collection<Products> products;
@@ -63,6 +63,7 @@ public class ShopBean implements Serializable{
     }
 
     public int getPrcount() {
+      
         return prcount;
     }
 
@@ -109,6 +110,20 @@ public class ShopBean implements Serializable{
     }
 
     public Collection<Products> getProducts() {
+        try{
+     prcount = dl.getProductCount();
+   }
+   catch(Exception e)
+   {
+       e.printStackTrace();
+   }
+ //System.out.println("prcount = "+prcount);
+  quantity= new ArrayList<>();
+    // prcount = dl.getAllProducts().size();
+     for(int i=1; i<=prcount; i++)
+     {
+         quantity.add(0);
+     }
         return dl.getAllProducts();
     }
 
@@ -134,12 +149,10 @@ public class ShopBean implements Serializable{
  public ShopBean() {
     HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
      cid = Integer.parseInt(session.getAttribute("cid").toString());
-     quantity= new ArrayList<>();
-    // prcount = dl.getAllProducts().size();
-     for(int i=1; i<=4; i++)
-     {
-         quantity.add(0);
-     }
+   // System.out.println("prcount = "+prcount);
+  // Collection<Products> prs = dl.getAllProducts();
+  
+    
     //c = dl.getCustomer(cid);
     }
 
